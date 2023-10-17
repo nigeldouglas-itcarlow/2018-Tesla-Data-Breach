@@ -5,3 +5,7 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 
 ![outline](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/e8913e81-8178-4f98-8474-0243b32fc098)
 
+## Scripts
+
+All mining code operations are sourced from my other repo: <br/>
+https://github.com/n1g3ld0ugla5/falco-mining-demo
