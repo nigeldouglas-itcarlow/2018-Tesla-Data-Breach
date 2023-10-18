@@ -1,0 +1,10 @@
+- rule: Create Unauthenticated Kubernetes Dashboard
+  desc: >
+    Detect an attempt to create a Kubernetes dashboard (Service of type NodePort) without proper authentication.
+  condition: kevt and service and kcreate and ka.req.service.type=NodePort and ka.target.namespace=kube-system and not user_known_node_port_service and
+    (not ka.user.username or not ka.user.groups or count(ka.user.groups) = 0) and
+    (ka.target.name =~ "dashboard" or ka.target.name =~ "kubernetes-dashboard")
+  output: Unauthenticated Kubernetes Dashboard Created (service=%ka.target.name resource=%ka.target.resource ns=%ka.target.namespace)
+  priority: WARNING
+  source: k8s_audit
+  tags: [k8s]
