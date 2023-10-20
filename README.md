@@ -48,8 +48,8 @@ eksctl scale nodegroup --cluster tesla-cluster --name ng-a4f7283a --nodes 0
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard/tree/master) is a general purpose, web-based UI for Kubernetes clusters. <br/>
 It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.<br/>
 <br/>
-When Kubernetes dashboard is installed using the recommended settings, both ```authentication``` and ```HTTPS``` are enabled. <br/>
-Sometimes, organizations like Tesla choose to disable authentication or HTTPS. <br/>
+When Kubernetes dashboard is installed using the recommended settings, both ```authentication``` and ```HTTPS``` are enabled. Sometimes, organizations like Tesla choose to disable authentication or HTTPS. <br/>
+<br/>
 For example, if Kubernetes dashboard is served behind a proxy, then it's unnecessary to enable authentication when the proxy has its own authentication enabled. <br/>
 <br/>
 Kubernetes dashboard uses auto-generated certificates for HTTPS, which may cause problems for HTTP client to access. <br/>
