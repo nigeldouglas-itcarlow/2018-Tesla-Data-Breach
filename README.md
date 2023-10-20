@@ -76,3 +76,19 @@ Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 an
 After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
 
 <img width="883" alt="kubernetes_dashboard_skip" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/ba26d2c0-304e-49d7-86d9-64b8a368b05e">
+
+## Installing Falco as our SOC solution
+
+
+#### Supporting documentation for Falco event collect from Kubernetes and Cloud
+
+- [Kubernetes Audit Logs](https://falco.org/docs/event-sources/plugins/kubernetes-audit/)
+- [K8s Audit for EKS Logs](https://falco.org/blog/k8saudit-eks-plugin/)
+- [Falco on AWS Cloud](https://falco.org/blog/falco-on-aws/)
+
+## Enabling Kubernetes Audit Logs in Falco
+To enable Kubernetes audit logs, you need to change the arguments to the ```kube-apiserver``` process to add ```--audit-policy-file``` and ```--audit-webhook-config-file``` arguments and provide files that implement an audit policy/webhook configuration.
+<br/><br/>
+Below is a step-by-step guide will show you how to configure kubernetes audit logs on minikube and deploy Falco. <br/>
+Managed Kubernetes providers, like AWS EKS, usually provide a mechanism to configure the audit system.<br/>
+https://falco.org/docs/install-operate/third-party/learning/
