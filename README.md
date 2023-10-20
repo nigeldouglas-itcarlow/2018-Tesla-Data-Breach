@@ -31,3 +31,14 @@ eksctl create cluster tesla-cluster --node-type t3.xlarge --nodes=1 --nodes-min=
 ```
 
 ![Screenshot 2023-10-20 at 17 08 09](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/85425963-6ef6-4677-9177-87e548b2e980)
+
+Once the cluster is successfully spun-up, I can scale it down to ```zero nodes``` to bring my compute costs in the cloud down to $0 until I'm ready to do actual work.
+
+```
+date
+eksctl get cluster
+eksctl get nodegroup --cluster tesla-cluster
+eksctl scale nodegroup --cluster tesla-cluster --name ng-a4f7283a --nodes 0
+```
+
+![Screenshot 2023-10-20 at 18 01 38](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/7826f6ed-1947-4b23-93d7-53d83f2ca62b)
