@@ -4,6 +4,7 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 # Architectural Diagram
 
 ![outline](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/e8913e81-8178-4f98-8474-0243b32fc098)
+[Link to Google Diagram](https://docs.google.com/drawings/d/1Vx_12imsuZ7a-8dCVp3JT9yXyzVF4ETjX4Hb5ecpLPw/edit)
 
 ## Scripts
 
