@@ -77,6 +77,12 @@ After you have done this, when Kubernetes dashboard is opened, you can click ```
 
 <img width="883" alt="kubernetes_dashboard_skip" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/ba26d2c0-304e-49d7-86d9-64b8a368b05e">
 
+#### Supporting documentation for Kubernetes Dashboard without Authentication
+
+- [Kubernetes Web UI Activation without Authentication](https://medium.com/@sarpkoksal/kubernetes-web-ui-dashboard-activation-without-authentication-e99447c8a71d)
+- [Skipping login to allows users to have unrestricted access](https://github.com/kubernetes/dashboard/issues/2412)
+- [Bypassing authentication for the local Kubernetes Cluster Dashboard](https://devblogs.microsoft.com/premier-developer/bypassing-authentication-for-the-local-kubernetes-cluster-dashboard/)
+
 ## Installing Falco as our SOC solution
 
 
