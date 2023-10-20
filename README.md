@@ -68,7 +68,11 @@ The above manifest is a modified version of the deployment of Kubernetes dashboa
 After this change, Kubernetes dashboard server now starts on ```port 9090 for HTTP```. 
 It has also modified the ```livenessProbe``` to use HTTP as the scheme and 9090 as the port. <br/>
 
-
+<b> INSERT SCREENSHOT OF SERVICES AND DEPLOYMENTS AFTER CREATION </b>
 
 Port 9090 is added as the ```containerPort```. <br/>
-Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```.
+Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```. <br/>
+<br/>
+After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
+
+<img width="883" alt="kubernetes_dashboard_skip" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/ba26d2c0-304e-49d7-86d9-64b8a368b05e">
