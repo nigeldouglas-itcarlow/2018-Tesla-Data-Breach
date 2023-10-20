@@ -9,3 +9,13 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 
 All mining code operations are sourced from my other repo: <br/>
 https://github.com/n1g3ld0ugla5/falco-mining-demo
+
+## Setting-up the Sanbox
+```
+aws configure --profile nigel-aws-profile
+export AWS_PROFILE=nigel-aws-profile                                            
+aws sts get-caller-identity --profile nigel-aws-profile
+aws eks update-kubeconfig --region eu-west-1 --name tesla-cluster
+```
+
+![Screenshot 2023-10-20 at 17 04 05](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/6c24b473-2f72-4707-a58b-4296e704ccce)
