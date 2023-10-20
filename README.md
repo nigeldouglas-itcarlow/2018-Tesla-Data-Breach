@@ -11,6 +11,8 @@ All mining code operations are sourced from my other repo: <br/>
 https://github.com/n1g3ld0ugla5/falco-mining-demo
 
 ## Setting-up the Sanbox
+
+Had to setup an ```AWS-CLI Profile``` in order to interact with AWS services via my local workstation
 ```
 aws configure --profile nigel-aws-profile
 export AWS_PROFILE=nigel-aws-profile                                            
@@ -19,3 +21,13 @@ aws eks update-kubeconfig --region eu-west-1 --name tesla-cluster
 ```
 
 ![Screenshot 2023-10-20 at 17 04 05](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/6c24b473-2f72-4707-a58b-4296e704ccce)
+
+Once I had AWS-CLI installed, I created a ```1 node, AWS EKS cluster``` using EKSCTL CLI tool. <br/>
+Notice how I use the ```date``` command purely to confirm when those actions were enforced.
+
+```
+date
+eksctl create cluster tesla-cluster --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
+```
+
+![Screenshot 2023-10-20 at 17 08 09](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/85425963-6ef6-4677-9177-87e548b2e980)
