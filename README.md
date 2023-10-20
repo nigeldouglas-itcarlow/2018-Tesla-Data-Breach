@@ -42,3 +42,33 @@ eksctl scale nodegroup --cluster tesla-cluster --name ng-a4f7283a --nodes 0
 ```
 
 ![Screenshot 2023-10-20 at 18 01 38](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/7826f6ed-1947-4b23-93d7-53d83f2ca62b)
+
+## Exposing an insecure Kubernetes Dashboard
+
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard/tree/master) is a general purpose, web-based UI for Kubernetes clusters. <br/>
+It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.<br/>
+<br/>
+When Kubernetes dashboard is installed using the recommended settings, both ```authentication``` and ```HTTPS``` are enabled. <br/>
+Sometimes, organizations like Tesla choose to disable authentication or HTTPS. <br/>
+For example, if Kubernetes dashboard is served behind a proxy, then it's unnecessary to enable authentication when the proxy has its own authentication enabled. <br/>
+<br/>
+Kubernetes dashboard uses auto-generated certificates for HTTPS, which may cause problems for HTTP client to access. <br/>
+The below ```YAML``` manifest is pre-packaged to provide an insecure dashboard with disable authentication and disabled HTTP/s.
+```
+kubectl apply -f https://vividcode.io/content/insecure-kubernetes-dashboard.yml
+```
+
+The above manifest is a modified version of the deployment of Kubernetes dashboard which has removed the argument ```--auto-generate-certificates``` and has added some extra arguments:
+
+```--enable-skip-login``` <br/>
+```--disable-settings-authorizer``` <br/>
+```--enable-insecure-login``` <br/>
+```--insecure-bind-address=0.0.0.0``` <br/>
+<br/>
+After this change, Kubernetes dashboard server now starts on ```port 9090 for HTTP```. 
+It has also modified the ```livenessProbe``` to use HTTP as the scheme and 9090 as the port. <br/>
+
+
+
+Port 9090 is added as the ```containerPort```. <br/>
+Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```.
