@@ -106,6 +106,12 @@ This way, AWS automatically assigns the public IP address for the dashboard serv
 
 <img width="1437" alt="Screenshot 2023-10-21 at 13 23 54" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/8013ee39-1b8e-4147-8179-1e84f590db89">
 
+Proof that the L7 LB service was created in AWS automatically <br/>
+However, there seems to be some health issues preventing me from accessing the dashboard.
+
+<img width="1437" alt="Screenshot 2023-10-21 at 13 36 52" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/73b8c33f-c7da-4fc3-a2ff-040a7d083453">
+
+
 
 After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
 
