@@ -65,7 +65,10 @@ The above manifest is a modified version of the deployment of Kubernetes dashboa
 ```--disable-settings-authorizer``` <br/>
 ```--enable-insecure-login``` <br/>
 ```--insecure-bind-address=0.0.0.0``` <br/>
-<br/>
+
+<img width="1439" alt="Screenshot 2023-10-21 at 12 41 45" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/e2e3ec87-52fc-4799-aec8-c2e733d1e490">
+
+
 After this change, Kubernetes dashboard server now starts on ```port 9090 for HTTP```. 
 It has also modified the ```livenessProbe``` to use HTTP as the scheme and 9090 as the port. <br/>
 
