@@ -98,7 +98,8 @@ We can even see the underlying EC2 instance associated with the Kubernetes clust
 
 The IP address in the previous OIDC screenshot matches the private IP of my EC2 instance on AWS:
 
-![Uploading Screenshot 2023-10-21 at 13.07.53.png…]()
+<img width="1437" alt="Screenshot 2023-10-21 at 13 07 53" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a1aa21a2-3e7f-426c-a206-f850a85733bd">
+
 
 
 After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
