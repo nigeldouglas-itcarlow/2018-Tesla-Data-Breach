@@ -6,12 +6,12 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 ![outline](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/e8913e81-8178-4f98-8474-0243b32fc098)
 [Link to Google Diagram](https://docs.google.com/drawings/d/1Vx_12imsuZ7a-8dCVp3JT9yXyzVF4ETjX4Hb5ecpLPw/edit)
 
-## Tactics & Techniques to detect with Falco aligned with MITRE ATT&CK Framework
+## Falco Detections aligned with MITRE ATT&CK Framework
 
 | Falco Detection Rule | Description | Event Source | MITRE ATT&CK Tactic
 | :---         |     :---:   |     :---:      |          ---: |
-| git status   | git status | git status     | git status    |
-| git diff     | git diff  | git diff       | git diff      |
+| [Terminal Shell in Container](https://github.com/falcosecurity/rules/blob/c558fc7d2d02cc2c2edc968fe5770d544f1a9d55/rules/falco_rules.yaml#L2060-L2071)   | A shell was used as the entrypoint/exec point into a container with an attached terminal. | Host System Calls | Execution  |
+| [Detect crypto miners using the Stratum protocol](https://github.com/falcosecurity/rules/blob/c558fc7d2d02cc2c2edc968fe5770d544f1a9d55/rules/falco_rules.yaml#L2898C9-L2903)    | Miners typically specify the mining pool to connect to with a URI that begins with <b>stratum+tcp</b>  | gHost System Calls       | Execution, Command & Control      |
 
 ## Setting-up the Sanbox
 
