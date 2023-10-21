@@ -87,9 +87,20 @@ However, I received the below error at proxy address: <br/>
 
 #### Troubleshooting the Dashboard Issues
 
-Port 9090 is added as the ```containerPort```. <br/>
-Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```. <br/>
-<br/>
+
+Port 9090 is added as the ```containerPort```. Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```. Accessing the dashboard at ```http://localhost:8001/``` shows all associated paths, and its quite easy to obfuscate credentials from these paths:
+
+<img width="1132" alt="Screenshot 2023-10-21 at 12 58 57" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/0e7847ce-3d39-42f5-a0f9-9d7999bb56d7">
+
+We can even see the underlying EC2 instance associated with the Kubernetes cluster. The ```EU-West-1``` denotes the AWS Region (Ireland) I've installed the EC2 instance, and the IP address of the VM is also present in the name:
+
+<img width="1437" alt="Screenshot 2023-10-21 at 13 02 09" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/614a26d5-a834-4a72-a6a9-b9855e4efa31">
+
+The IP address in the previous OIDC screenshot matches the private IP of my EC2 instance on AWS:
+
+![Uploading Screenshot 2023-10-21 at 13.07.53.png…]()
+
+
 After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
 
 <img width="883" alt="kubernetes_dashboard_skip" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/ba26d2c0-304e-49d7-86d9-64b8a368b05e">
