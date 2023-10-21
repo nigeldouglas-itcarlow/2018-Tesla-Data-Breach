@@ -72,7 +72,17 @@ The above manifest is a modified version of the deployment of Kubernetes dashboa
 After this change, Kubernetes dashboard server now starts on ```port 9090 for HTTP```. 
 It has also modified the ```livenessProbe``` to use HTTP as the scheme and 9090 as the port. <br/>
 
-<b> INSERT SCREENSHOT OF SERVICES AND DEPLOYMENTS AFTER CREATION </b>
+#### Accessing the Kubernetes Dashboard
+
+This ```proxy``` command starts a proxy to the Kubernetes API server, and the dashboard should be accessible at <br/>
+```http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.```
+
+<img width="1265" alt="Screenshot 2023-10-21 at 12 49 34" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/f10d9bbc-999d-49df-9766-e917b2c36716">
+
+However, I received the below error at proxy address: <br/>
+```"message": "no endpoints available for service \"https:kubernetes-dashboard:\""```
+
+#### Troubleshooting the Dashboard Issues
 
 Port 9090 is added as the ```containerPort```. <br/>
 Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```. <br/>
