@@ -82,6 +82,9 @@ This ```proxy``` command starts a proxy to the Kubernetes API server, and the da
 However, I received the below error at proxy address: <br/>
 ```"message": "no endpoints available for service \"https:kubernetes-dashboard:\""```
 
+<img width="1265" alt="Screenshot 2023-10-21 at 12 48 29" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/06cfc246-5c1f-4d31-9e1b-380ce5231156">
+
+
 #### Troubleshooting the Dashboard Issues
 
 Port 9090 is added as the ```containerPort```. <br/>
