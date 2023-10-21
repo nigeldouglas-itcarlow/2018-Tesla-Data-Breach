@@ -6,10 +6,12 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 ![outline](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/e8913e81-8178-4f98-8474-0243b32fc098)
 [Link to Google Diagram](https://docs.google.com/drawings/d/1Vx_12imsuZ7a-8dCVp3JT9yXyzVF4ETjX4Hb5ecpLPw/edit)
 
-## Scripts
+## Tactics & Techniques to detect with Falco aligned with MITRE ATT&CK Framework
 
-All mining code operations are sourced from my other repo: <br/>
-https://github.com/n1g3ld0ugla5/falco-mining-demo
+| Falco Detection Rule | Description | Event Source | MITRE ATT&CK Tactic
+| :---         |     :---:   |     :---:      |          ---: |
+| git status   | git status | git status     | git status    |
+| git diff     | git diff  | git diff       | git diff      |
 
 ## Setting-up the Sanbox
 
