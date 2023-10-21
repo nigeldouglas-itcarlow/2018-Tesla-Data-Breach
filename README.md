@@ -96,10 +96,15 @@ We can even see the underlying EC2 instance associated with the Kubernetes clust
 
 <img width="1437" alt="Screenshot 2023-10-21 at 13 02 09" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/614a26d5-a834-4a72-a6a9-b9855e4efa31">
 
-The IP address in the previous OIDC screenshot matches the private IP of my EC2 instance on AWS:
+The IP address in the previous OIDC screenshot does not match the private IP of my EC2 instance on AWS <br/>
+I will come back to this later to understand how that OIDC address is used for single sign-on:
 
 <img width="1437" alt="Screenshot 2023-10-21 at 13 07 53" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a1aa21a2-3e7f-426c-a206-f850a85733bd">
 
+Either way, I modified the original deployment script to make sure the Kubernetes Deployment uses a ```LoadBalancer``` service. <br/>
+This way, AWS automatically assigns the public IP address for the dashboard service. Allowing it to be accessed publically:
+
+<img width="1437" alt="Screenshot 2023-10-21 at 13 23 54" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/8013ee39-1b8e-4147-8179-1e84f590db89">
 
 
 After you have done this, when Kubernetes dashboard is opened, you can click ```Skip``` in the login page to skip authentication and go to the dashboard directly.
