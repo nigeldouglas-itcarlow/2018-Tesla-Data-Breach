@@ -137,7 +137,15 @@ kubectl get pods -n falco -o wide -w
 
 <img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
 
-
+To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
+```
+sudo cat /etc/shadow > /dev/null
+sudo journalctl _COMM=falco -p warning
+```
+```
+find /root -name "id_rsa"
+sudo grep falco /var/log/syslog | grep Warning
+```
 
 #### Supporting documentation for Falco event collect from Kubernetes and Cloud
 
