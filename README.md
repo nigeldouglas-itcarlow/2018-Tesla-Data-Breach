@@ -207,9 +207,9 @@ Tested - and works!
 
 <img width="1437" alt="Screenshot 2023-10-22 at 14 10 36" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/d4cbbfbe-7d5c-4638-b19a-a8728bb0e65a">
 
-Testing - my MetaMask wallet:
+Testing my own MetaMask wallet using the ```stratum``` protocol outlined by the [Trend Micro](https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/tesla-and-jenkins-servers-fall-victim-to-cryptominers#:~:text=Stratum%20bitcoin%20mining%20protocol) researchers:
 ```
-./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero
+./xmrig -o stratum+tcp://xmr.pool.minergate.com:45700 -u lies@lies.lies -p x -t 2
 ```
 
 ## Custom Rules - Command & Control
@@ -237,6 +237,11 @@ helm install falco -f custom-rules.yaml falcosecurity/falco -n falco
 ```
 helm upgrade falco -f custom-rules.yaml falcosecurity/falco -n falco
 ```
+
+<img width="1075" alt="Screenshot 2023-10-22 at 19 00 35" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a7409588-5a37-4255-a12e-8766f47cce27">
+
+
+
 And we will see in our logs something like:
 ```
 Sun Oct 22 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
