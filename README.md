@@ -228,11 +228,14 @@ killall -9 xmrig
 ```
 So next step is to use the ```custom-rules.yaml``` file for installing the Falco Helm chart.
 ```
-helm install falco -f custom-rules.yaml falcosecurity/falco
+helm install falco -f custom-rules.yaml falcosecurity/falco -n falco
+```
+```
+helm upgrade falco -f custom-rules.yaml falcosecurity/falco -n falco
 ```
 And we will see in our logs something like:
 ```
-Mon Jan 30 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
+Sun Oct 22 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
 ```
 
 ## Credential Access
