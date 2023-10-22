@@ -127,12 +127,17 @@ After you have done this, when Kubernetes dashboard is opened, you can click ```
 
 ## Installing Falco as our SOC solution
 
+Installed Falco via ```Helm``` using the ```--set tty=true``` feature flag to ensure events are handled in real-time.
 ```
 helm repo add falcosecurity https://falcosecurity.github.io/charts
 helm repo update
 helm install falco falcosecurity/falco --namespace falco --create-namespace --set tty=true
 kubectl get pods -n falco -o wide -w
 ```
+
+<img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
+
+
 
 #### Supporting documentation for Falco event collect from Kubernetes and Cloud
 
