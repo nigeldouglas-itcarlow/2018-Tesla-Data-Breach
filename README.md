@@ -14,6 +14,8 @@ As part of this task I was required to map the Tesla Data Breach to the MITRE AT
 | [Detect crypto miners using the Stratum protocol](https://github.com/falcosecurity/rules/blob/c558fc7d2d02cc2c2edc968fe5770d544f1a9d55/rules/falco_rules.yaml#L2898C9-L2903)    | Miners typically specify the mining pool to connect to with a URI that begins with <b>stratum+tcp</b>  | Host System Calls       | Execution, Command & Control      |
 | [Detect outbound connections to common miner pool ports](https://github.com/falcosecurity/rules/blob/c558fc7d2d02cc2c2edc968fe5770d544f1a9d55/rules/falco_rules.yaml#L2889-L2896)    | Miners typically connect to mining pools on common ports.  | Host System Calls       | Execution, Command & Control      |
 | [Mining Binary Detected](https://github.com/n1g3ld0ugla5/falco-mining-demo/blob/main/mining-rules.yaml#L3-L50)    | Malicious script or binary detected within pod or host. This rule will be triggered by the <b>execve</b> syscall  | Host System Calls       | Persistence      |
+| [List AWS S3 Buckets](https://github.com/falcosecurity/plugins/blob/master/plugins/cloudtrail/rules/aws_cloudtrail_rules.yaml#L355-L371)    | Detect listing of all S3 buckets. In the case of Tesla, those buckets contained sensitive data such as passwords, tokens and telemetry data.  | AWS Cloudtrail Audit Logs       | Credential Access     |
+| [Contact EC2 Instance Metadata Service From Container](https://github.com/falcosecurity/rules/blob/c558fc7d2d02cc2c2edc968fe5770d544f1a9d55/rules/falco_rules.yaml#L2382-L2390)    | Detect listing of all S3 buckets. In the case of Tesla, those buckets contained sensitive data such as passwords, tokens and telemetry data.  | Host System Calls       | Lateral Movement    |
 
 ## Setting-up the Sanbox
 
