@@ -106,6 +106,11 @@ I will come back to this later to understand how that OIDC address is used for s
 Either way, I modified the original deployment script to make sure the Kubernetes Deployment uses a ```LoadBalancer``` service. <br/>
 This way, AWS automatically assigns the public IP address for the dashboard service. Allowing it to be accessed publically:
 
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/public-dashboard.yaml
+```
+
+
 <img width="1437" alt="Screenshot 2023-10-21 at 13 23 54" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/8013ee39-1b8e-4147-8179-1e84f590db89">
 
 Proof that the L7 LB service was created in AWS automatically <br/>
