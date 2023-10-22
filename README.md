@@ -243,7 +243,9 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Bre
 helm upgrade falco -f working-rules.yaml falcosecurity/falco -n falco --set tty=true
 ```
 
-<img width="1075" alt="Screenshot 2023-10-22 at 19 00 35" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a7409588-5a37-4255-a12e-8766f47cce27">
+So the upgrade was successful. There was no formatting issues with the file, but the new rules did not work.
+<img width="1440" alt="Screenshot 2023-10-22 at 19 18 08" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/6657bffd-c085-4e32-8ce3-4f55e23702c5">
+
 
 
 
