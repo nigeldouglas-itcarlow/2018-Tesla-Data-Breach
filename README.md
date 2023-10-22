@@ -226,7 +226,11 @@ You can now either kill the process by ```Process Name``` or ```Process ID```
 ```
 killall -9 xmrig
 ```
-So next step is to use the ```custom-rules.yaml``` file for installing the Falco Helm chart.
+So next step is to use the ```custom-rules.yaml``` file for installing the Falco Helm chart. <br/>
+I will keep working on an updated rules feed via Github to detect the Tesla IoCs.:
+```
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/rules/custom-rules.yaml
+```
 ```
 helm install falco -f custom-rules.yaml falcosecurity/falco -n falco
 ```
