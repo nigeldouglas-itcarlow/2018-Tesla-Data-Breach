@@ -139,7 +139,7 @@ Installed Falco via ```Helm``` using the ```--set tty=true``` feature flag to en
 ```
 helm repo add falcosecurity https://falcosecurity.github.io/charts
 helm repo update
-helm install falco falcosecurity/falco --namespace falco --create-namespace --set tty=true
+helm install falco falcosecurity/falco -f working-rules.yaml --namespace falco --create-namespace --set tty=true
 kubectl get pods -n falco -o wide -w
 ```
 
