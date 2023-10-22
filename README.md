@@ -90,7 +90,6 @@ However, I received the below error at proxy address: <br/>
 
 #### Troubleshooting the Dashboard Issues
 
-
 Port 9090 is added as the ```containerPort```. Similarly, the Kubernetes Service abstraction for the dashboard opens port 80 and uses ```9090 as the target port```. Accessing the dashboard at ```http://localhost:8001/``` shows all associated paths, and its quite easy to obfuscate credentials from these paths:
 
 <img width="1132" alt="Screenshot 2023-10-21 at 12 58 57" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/0e7847ce-3d39-42f5-a0f9-9d7999bb56d7">
@@ -128,6 +127,12 @@ After you have done this, when Kubernetes dashboard is opened, you can click ```
 
 ## Installing Falco as our SOC solution
 
+```
+helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo update
+helm install falco falcosecurity/falco --namespace falco --create-namespace --set tty=true
+kubectl get pods -n falco -o wide -w
+```
 
 #### Supporting documentation for Falco event collect from Kubernetes and Cloud
 
@@ -141,3 +146,10 @@ To enable Kubernetes audit logs, you need to change the arguments to the ```kube
 Below is a step-by-step guide will show you how to configure kubernetes audit logs on minikube and deploy Falco. <br/>
 Managed Kubernetes providers, like AWS EKS, usually provide a mechanism to configure the audit system.<br/>
 https://falco.org/docs/install-operate/third-party/learning/
+
+## Running a Cryptominer on an insecure workload
+
+Create an insecure containerized workload with ```privileged=true``` to give unrestricted permissions for the miner:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
+```
