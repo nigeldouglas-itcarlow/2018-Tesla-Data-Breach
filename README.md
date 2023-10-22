@@ -265,4 +265,7 @@ sudo cat /etc/shadow > /dev/null
 find /root -name "id_rsa"
 ```
 
-
+### Cleanup Helm Deployments
+```
+helm uninstall falco -n falco
+```
