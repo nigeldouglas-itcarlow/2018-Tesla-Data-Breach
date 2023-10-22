@@ -212,9 +212,35 @@ Testing - my MetaMask wallet:
 ./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero
 ```
 
+## Custom Rules - Command & Control
+
+Make sure the xmrig process is no longer running
+```
+top
+```
+If so, find the ```Process ID``` of the xmrig service:
+```
+pidof xmrig
+```
+You can now either kill the process by ```Process Name``` or ```Process ID```
+```
+killall -9 xmrig
+```
+So next step is to use the ```custom-rules.yaml``` file for installing the Falco Helm chart.
+```
+helm install falco -f custom-rules.yaml falcosecurity/falco
+```
+And we will see in our logs something like:
+```
+Mon Jan 30 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
+```
+
+## Credential Access
 
 Finding credentials while we are in the container:
 ```
 sudo cat /etc/shadow > /dev/null
 find /root -name "id_rsa"
 ```
+
+
