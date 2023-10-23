@@ -306,3 +306,6 @@ aws eks update-kubeconfig --region eu-west-1 --name tesla-cluster
 ```
 
 <img width="1440" alt="Screenshot 2023-10-22 at 19 53 37" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/4fa455c7-a17d-4f0f-934a-02b0827add9c">
+
+Confirming the detection rules are present in the current, up-to-date rules feed: <br/>
+https://thomas.labarussias.fr/falco-rules-explorer/?source=okta
