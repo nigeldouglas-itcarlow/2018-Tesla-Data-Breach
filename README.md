@@ -145,6 +145,32 @@ kubectl get pods -n falco -o wide -w
 
 <img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
 
+Upgrading the custom rules feed:
+```
+helm upgrade falco -f custom-rules.yaml falcosecurity/falco -n falco
+```
+Edit the ConfigMap
+```
+kubectl edit cm falco-rules -n falco
+```
+Automate all the stuff
+```
+helm upgrade falco -f custom-rules.yaml falcosecurity/falco --namespace falco \
+  --create-namespace \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set auditLog.enabled=true \
+  --set collectors.kubernetes.enabled=false \
+  --set falcosidekick.webui.redis.storageEnabled=false
+```
+Delete the statefulSet so that the Redis pod can start without storageClass
+```
+kubectl get statefulset falco -n falco
+```
+```
+kubectl delete statefulset falco -n falco
+```
+
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
 ```
 kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'tesla-app'
