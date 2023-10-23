@@ -153,15 +153,16 @@ Edit the ConfigMap
 ```
 kubectl edit cm falco-rules -n falco
 ```
-Automate all the stuff
+Automate the deployent of ```Falco Sidekick``` UI with no ```Redis``` backend for storage of real-time events:
 ```
-helm upgrade falco -f custom-rules.yaml falcosecurity/falco --namespace falco \
+helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
   --set auditLog.enabled=true \
   --set collectors.kubernetes.enabled=false \
-  --set falcosidekick.webui.redis.storageEnabled=false
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  --set tty=true
 ```
 Delete the statefulSet so that the Redis pod can start without storageClass
 ```
