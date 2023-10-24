@@ -309,3 +309,8 @@ aws eks update-kubeconfig --region eu-west-1 --name tesla-cluster
 
 Confirming the detection rules are present in the current, up-to-date rules feed: <br/>
 https://thomas.labarussias.fr/falco-rules-explorer/?source=okta
+
+Accessing Falco Sidekick from my EC2 instance:
+```
+sudo ssh -i "falco-okta.pem" -L 2802:localhost:2802 ubuntu@ec2-**-***-**-***.eu-west-1.compute.amazonaws.com
+```
