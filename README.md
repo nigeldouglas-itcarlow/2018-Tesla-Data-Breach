@@ -310,7 +310,57 @@ aws eks update-kubeconfig --region eu-west-1 --name tesla-cluster
 Confirming the detection rules are present in the current, up-to-date rules feed: <br/>
 https://thomas.labarussias.fr/falco-rules-explorer/?source=okta
 
-Accessing Falco Sidekick from my EC2 instance:
+Exposing Falco Sidekick from my EC2 instance:
 ```
 sudo ssh -i "falco-okta.pem" -L 2802:localhost:2802 ubuntu@ec2-**-***-**-***.eu-west-1.compute.amazonaws.com
 ```
+
+Accessing the Sidekick UI via Localhost
+```
+http://localhost:2802/events/?since=15min&filter=mitre
+```
+
+## Running Atomic Red Team in Kubernetes
+
+Create the network namespace for the atomic red workload
+```
+kubectl create ns atomic-red
+```
+
+Create the deployment using an external image `issif/atomic-red:latest`
+```
+kubectl apply -f - <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atomicred
+  namespace: atomic-red
+  labels:
+    app: atomicred
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atomicred
+  template:
+    metadata:
+      labels:
+        app: atomicred
+    spec:
+      containers:
+      - name: atomicred
+        image: issif/atomic-red:latest
+        imagePullPolicy: "IfNotPresent"
+        command: ["sleep", "3560d"]
+        securityContext:
+          privileged: true
+      nodeSelector:
+        kubernetes.io/os: linux
+EOF
+```
+
+Note: This creates a pod called `atomicred` in the `atomic-red` network namespace:
+```
+kubectl get pods -n atomic-red -w | grep atomicred
+```
+
