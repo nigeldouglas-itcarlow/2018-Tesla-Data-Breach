@@ -155,11 +155,12 @@ kubectl get pods -n falco -o wide -w
 
 <img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
 
-Upgrading the custom rules feed:
-```
-helm upgrade falco -f custom-rules.yaml falcosecurity/falco -n falco
-```
-Edit the ConfigMap
+- Where the option ```falcoctl.config.artifact.install.refs``` governs which rules are downloaded at startup
+- ```falcoctl.config.artifact.follow.refs``` identifies which rules are automatically updated and
+- ```falco.rules_file``` indicates which rules are loaded by the engine.
+
+
+Alternatively, I can just edit the ConfigMap manually (and this might be easier in the end):
 ```
 kubectl edit cm falco-rules -n falco
 ```
