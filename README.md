@@ -334,6 +334,10 @@ find /root -name "id_rsa"
 helm uninstall falco -n falco
 ```
 
+<img width="899" alt="Screenshot 2023-10-27 at 14 43 45" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/6e579d96-f21c-4547-a8e6-14b60b338e41">
+
+
+
 ### AWS Profile Stuff
 ```
 aws configure --profile nigel-aws-profile
