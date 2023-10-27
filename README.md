@@ -187,6 +187,10 @@ Forwarding from 127.0.0.1:2802 -> 2802 Forwarding from [::1]:2802 -> 2802 Handli
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
 ```
 
+Shell into the newly, over-privileged workload:
+```
+kubectl exec -it tesla-app -- bash
+```
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
 ```
 kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'tesla-app'
