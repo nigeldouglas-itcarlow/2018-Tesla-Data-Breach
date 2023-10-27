@@ -375,7 +375,7 @@ Confirm the atomic red scenario was detected:
 ```
 
 
-Issues with the environment (In Progress):
+Issues with the environment (Making Number of VPCs was reached) - disregard:
 <img width="1138" alt="Screenshot 2023-10-25 at 20 40 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/cc00fbdd-e239-40e4-bc05-8d5365396bde">
 
 
