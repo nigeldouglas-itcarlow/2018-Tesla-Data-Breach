@@ -183,6 +183,7 @@ Forwarding from 127.0.0.1:2802 -> 2802 Forwarding from [::1]:2802 -> 2802 Handli
 
 ## Deploying a Test App and Checking Logs
 
+Create an insecure containerized workload with ```privileged=true``` to give unrestricted permissions for the miner:
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
 ```
@@ -191,6 +192,10 @@ Shell into the newly, over-privileged workload:
 ```
 kubectl exec -it tesla-app -- bash
 ```
+
+<img width="1440" alt="Screenshot 2023-10-27 at 12 02 09" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/ceb56366-359d-4af7-9f3a-c81d2e8485aa">
+
+
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
 ```
 kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'tesla-app'
@@ -214,11 +219,6 @@ Managed Kubernetes providers, like AWS EKS, usually provide a mechanism to confi
 https://falco.org/docs/install-operate/third-party/learning/
 
 ## Running a Cryptominer on an insecure workload
-
-Create an insecure containerized workload with ```privileged=true``` to give unrestricted permissions for the miner:
-```
-kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
-```
 
 The adversaries would have terminal shelled into the above workload in order to install the cryptominer.
 ```
