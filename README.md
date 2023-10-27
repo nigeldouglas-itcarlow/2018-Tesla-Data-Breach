@@ -251,10 +251,17 @@ find / -perm /6000 -type f
 
 Tested - and works!
 ```
-./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero --background
+./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero
 ```
 
-<img width="1437" alt="Screenshot 2023-10-22 at 14 10 36" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/d4cbbfbe-7d5c-4638-b19a-a8728bb0e65a">
+<img width="1440" alt="Screenshot 2023-10-27 at 12 05 51" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/b7d9123b-f589-4bd3-9e55-1274236c3c9e">
+
+On the right side pane, we can see that all rules are automatically labelled with relevant MITRE ATT&CK context:
+
+
+<img width="1440" alt="Screenshot 2023-10-27 at 12 06 03" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/392e58ea-357a-44ad-a37c-8b7bb783baec">
+
+
 
 Testing my own MetaMask wallet using the ```stratum``` protocol outlined by the [Trend Micro](https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/tesla-and-jenkins-servers-fall-victim-to-cryptominers#:~:text=Stratum%20bitcoin%20mining%20protocol) researchers:
 ```
