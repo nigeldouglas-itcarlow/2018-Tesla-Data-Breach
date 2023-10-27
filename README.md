@@ -172,12 +172,16 @@ As seen in the below screenshot, it may go through some crash status changes bef
 
 
 
-Delete the statefulSet so that the Redis pod can start without storageClass
+Finally, Port-Foward the Falco Sidekick from Macbook
 ```
-kubectl get statefulset falco -n falco
+kubectl port-forward svc/falcosidekick-ui 2802 --insecure-skip-tls-verify
 ```
+Forwarding from 127.0.0.1:2802 -> 2802 Forwarding from [::1]:2802 -> 2802 Handling connection for 2802
+
+## Deploying a Test App and Checking Logs
+
 ```
-kubectl delete statefulset falco -n falco
+kubectl apply -f <tesla-app.yaml>
 ```
 
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
