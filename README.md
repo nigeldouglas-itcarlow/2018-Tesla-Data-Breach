@@ -164,6 +164,14 @@ helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set tty=true
 ```
+
+I successfully deployed Falco and the associated dashboard <br/>
+As seen in the below screenshot, it may go through some crash status changes before running correctly (expected due to lack of priority set):
+
+<img width="653" alt="Screenshot 2023-10-27 at 11 43 33" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/91fa6653-3e9c-4b2c-8263-bf12a78d61f4">
+
+
+
 Delete the statefulSet so that the Redis pod can start without storageClass
 ```
 kubectl get statefulset falco -n falco
