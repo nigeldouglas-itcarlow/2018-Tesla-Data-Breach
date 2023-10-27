@@ -174,7 +174,7 @@ As seen in the below screenshot, it may go through some crash status changes bef
 
 Finally, Port-Foward the Falco Sidekick from Macbook
 ```
-kubectl port-forward svc/falcosidekick-ui 2802 --insecure-skip-tls-verify
+kubectl port-forward svc/falco-falcosidekick-ui -n falco 2802 --insecure-skip-tls-verify
 ```
 Forwarding from 127.0.0.1:2802 -> 2802 Forwarding from [::1]:2802 -> 2802 Handling connection for 2802
 
@@ -184,7 +184,7 @@ Forwarding from 127.0.0.1:2802 -> 2802 Forwarding from [::1]:2802 -> 2802 Handli
 ## Deploying a Test App and Checking Logs
 
 ```
-kubectl apply -f <tesla-app.yaml>
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
 ```
 
 To test the IDS/SOC tool, I peform one insecure behaviour in ```tab1``` while also check for the Falco log event in ```tab2```:
