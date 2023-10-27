@@ -135,11 +135,21 @@ After you have done this, when Kubernetes dashboard is opened, you can click ```
 
 ## Installing Falco as our SOC solution
 
-Installed Falco via ```Helm``` using the ```--set tty=true``` feature flag to ensure events are handled in real-time.
+Installed Falco via ```Helm``` using the ```--set tty=true``` feature flag to ensure events are handled in real-time. <br/>
+By default, only the ```stable``` rules are loaded by Falco, you can install the ```sandbox``` or ```incubating``` rules by referencing them in the Helm chart: <br/>
+https://falco.org/docs/reference/rules/default-rules/ 
 ```
-helm repo add falcosecurity https://falcosecurity.github.io/charts
-helm repo update
-helm install falco falcosecurity/falco -f working-rules.yaml --namespace falco --create-namespace --set tty=true
+helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
+  --create-namespace \
+  --set tty=true \
+  --set auditLog.enabled=true \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set collectors.kubernetes.enabled=false \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  --set "falcoctl.config.artifact.install.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falcoctl.config.artifact.follow.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falco.rules_file={/etc/falco/k8s_audit_rules.yaml,/etc/falco/rules.d,/etc/falco/falco_rules.yaml,/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
 kubectl get pods -n falco -o wide -w
 ```
 
