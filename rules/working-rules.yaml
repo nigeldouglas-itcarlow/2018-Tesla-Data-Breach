@@ -1,9 +1,8 @@
 customRules:
   rules-mining.yaml: |-
-    - rule: Detect outbound connections to common miner pool ports
-      desc: Miners typically connect to miner pools on common ports.
-      condition: net_miner_pool and not trusted_images_query_miner_domain_dns
-      enabled: true
-      output: Outbound connection to IP/Port flagged by https://cryptoioc.ch (command=%proc.cmdline pid=%proc.pid port=%fd.rport ip=%fd.rip container=%container.info image=%container.image.repository)
+    - rule: Detect crypto miners using the Stratum protocol
+      desc: Miners typically specify the mining pool to connect to with a URI that begins with 'stratum+tcp'
+      condition: spawned_process and (proc.cmdline contains "stratum+tcp" or proc.cmdline contains "stratum2+tcp" or proc.cmdline contains "stratum+ssl" or proc.cmdline contains "stratum2+ssl")
+      output: Possible miner running (command=%proc.cmdline pid=%proc.pid container=%container.info image=%container.image.repository)
       priority: CRITICAL
-      tags: [host, container, network, mitre_execution, T1496]
+      tags: [host, container, process, mitre_execution, T1496]
