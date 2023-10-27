@@ -369,9 +369,40 @@ Shell into the newly-deployed atomic-red workload:
 "kubectl exec -it -n atomic-red deploy/atomicred -- bash" "Enter"
 ```
 
-Confirm the atomic red scenario was detected:
+Confirm the atomic red scenario was detected (in a second terminal window):
 ```
 "kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'" "Enter"
+```
+
+### Detect File Deletion on Host
+
+Start a Powershell session with `pwsh`:
+```
+pwsh
+```
+
+Load the Atomic Red Team module:
+```
+Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
+```
+
+Check the details of the TTPs:
+```
+Invoke-AtomicTest T1070.004 -ShowDetails
+```
+Check the prerequisites to ensure the test conditions are right:
+```
+Invoke-AtomicTest T1070.004 -GetPreReqs
+```
+
+
+### Detect File Deletion on Host
+
+We will now execute the test. <br/>
+This test will attempt to delete individual files, or individual directories. <br/>
+This triggers the `Warning bulk data removed from disk` rule by default.
+```
+Invoke-AtomicTest T1070.004
 ```
 
 
