@@ -364,6 +364,16 @@ Note: This creates a pod called `atomicred` in the `atomic-red` network namespac
 kubectl get pods -n atomic-red -w | grep atomicred
 ```
 
+Shell into the newly-deployed atomic-red workload:
+```
+"kubectl exec -it -n atomic-red deploy/atomicred -- bash" "Enter"
+```
+
+Confirm the atomic red scenario was detected:
+```
+"kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'" "Enter"
+```
+
 
 Issues with the environment (In Progress):
 <img width="1138" alt="Screenshot 2023-10-25 at 20 40 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/cc00fbdd-e239-40e4-bc05-8d5365396bde">
