@@ -431,6 +431,12 @@ Start a Powershell session with `pwsh`:
 pwsh
 ```
 
+Atomic Red Tests are all performed via Powershell <br/> 
+So it might look a bit weird that I shell into a Linux container in order to perform Pwsh actions.
+
+<img width="736" alt="Screenshot 2023-10-29 at 11 55 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/219f7436-7f84-4e1d-ad98-0a5ad5d5ff18">
+
+
 Load the Atomic Red Team module:
 ```
 Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
