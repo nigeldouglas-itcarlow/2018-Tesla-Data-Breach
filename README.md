@@ -166,15 +166,20 @@ kubectl edit cm falco-rules -n falco
 ```
 Automate the deployent of ```Falco Sidekick``` UI with no ```Redis``` backend for storage of real-time events:
 ```
-helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
+helm install falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
   --set auditLog.enabled=true \
-  --set collectors.kubernetes.enabled=false \
+  --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set tty=true
 ```
+
+I can inject ```Custom Rules``` via the ```working-rules.yaml``` manifest:
+<img width="1177" alt="Screenshot 2023-10-29 at 11 42 58" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/d511fad7-f146-490a-a7d8-39e19e6dcaf5">
+
+
 
 I successfully deployed Falco and the associated dashboard <br/>
 As seen in the below screenshot, it may go through some crash status changes before running correctly (expected due to lack of priority set):
