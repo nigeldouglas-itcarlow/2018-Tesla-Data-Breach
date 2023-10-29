@@ -461,6 +461,13 @@ This triggers the `Warning bulk data removed from disk` rule by default.
 Invoke-AtomicTest T1070.004
 ```
 
+I successfully detected file deletion in the Kubernetes environment:
+
+<img width="1439" alt="Screenshot 2023-10-29 at 11 58 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/076c4a75-f6a8-4b01-81e4-3adf06532f84">
+
+
+
+## Ongoing Issues
 
 Issues with the environment (Making Number of VPCs was reached) - disregard:
 <img width="1138" alt="Screenshot 2023-10-25 at 20 40 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/cc00fbdd-e239-40e4-bc05-8d5365396bde">
