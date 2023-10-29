@@ -416,12 +416,12 @@ I successfully deployed the ```atomic-red``` container to my environment:
 
 Shell into the newly-deployed atomic-red workload:
 ```
-"kubectl exec -it -n atomic-red deploy/atomicred -- bash" "Enter"
+kubectl exec -it -n atomic-red deploy/atomicred -- bash
 ```
 
 Confirm the atomic red scenario was detected (in a second terminal window):
 ```
-"kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'" "Enter"
+kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'
 ```
 
 ### Detect File Deletion on Host
