@@ -410,6 +410,10 @@ Note: This creates a pod called `atomicred` in the `atomic-red` network namespac
 kubectl get pods -n atomic-red -w | grep atomicred
 ```
 
+I successfully deployed the ```atomic-red``` container to my environment:
+<img width="877" alt="Screenshot 2023-10-29 at 11 50 08" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/4b0261a9-676d-445a-8573-634ae2f38202">
+
+
 Shell into the newly-deployed atomic-red workload:
 ```
 "kubectl exec -it -n atomic-red deploy/atomicred -- bash" "Enter"
