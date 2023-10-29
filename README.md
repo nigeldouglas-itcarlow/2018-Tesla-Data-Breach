@@ -48,7 +48,7 @@ eksctl get nodegroup --cluster tesla-cluster
 eksctl scale nodegroup --cluster tesla-cluster --name ng-a4f7283a --nodes 0
 ```
 
-![Screenshot 2023-10-20 at 18 01 38](https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/7826f6ed-1947-4b23-93d7-53d83f2ca62b)
+<img width="807" alt="Screenshot 2023-10-29 at 12 02 04" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a9d689b7-bb67-4f4a-a1c7-2e0a5c63e806">
 
 ## Exposing an insecure Kubernetes Dashboard
 
