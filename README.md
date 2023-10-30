@@ -530,17 +530,6 @@ customRules:
             - proc.cmdline
 ```
 
-This will write and quit the newly-configured `mitre_rules.yaml` file
-Using `helm upgrade --reuse-values`, it is a good practice to ensure `--tty=true` remains enabled - ensuring all rules are triggered in realtime.
-
-```
-helm upgrade falco falcosecurity/falco \
-  -n falco \
-  --version 3.3.0 \
-  --reuse-values \
-  -f mitre_rules.yaml
-```
-
 Alternative way of testing the new ```mitre_rules.yaml``` file:
 ```
 helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
@@ -561,6 +550,11 @@ Note: A new pod after several seconds. Please be patient.
 ```
 kubectl get pods -n falco -w
 ```
+
+The new detection totally worked. ```Hurrah```!!
+
+<img width="1440" alt="Screenshot 2023-10-30 at 18 27 15" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/348b8441-3b64-4d63-bc68-4e5cad4b5074">
+
 
 
 When you’re ready to move on to the next test or wrap things up, you’ll want to `-CleanUp` the test to avoid potentially having problems running other tests.
