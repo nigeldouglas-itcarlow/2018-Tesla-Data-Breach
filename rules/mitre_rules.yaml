@@ -38,9 +38,10 @@ customRules:
           fields:
             - proc.cmdline
 
-    - rule: Detect crypto miners using the Stratum protocol
+    - rule: Detect cryptominers that use Stratum protocol
       desc: Miners typically specify the mining pool to connect to with a URI that begins with 'stratum+tcp'
       condition: spawned_process and (proc.cmdline contains "stratum+tcp" or proc.cmdline contains "stratum2+tcp" or proc.cmdline contains "stratum+ssl" or proc.cmdline contains "stratum2+ssl")
       output: Possible miner running (command=%proc.cmdline pid=%proc.pid container=%container.info image=%container.image.repository)
       priority: CRITICAL
+      enabled: true
       tags: [MITRE_IMPACT, MITRE_T1496_resource_hijacking]
