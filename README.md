@@ -65,6 +65,11 @@ The below ```YAML``` manifest is pre-packaged to provide an insecure dashboard w
 kubectl apply -f https://vividcode.io/content/insecure-kubernetes-dashboard.yml
 ```
 
+Still experiencing issues exposing the dashboard via port forwarding:
+```
+kubectl port-forward svc/kubernetes-dashboard -n kubernetes-dashboard 8443 --insecure-skip-tls-verify
+```
+
 The above manifest is a modified version of the deployment of Kubernetes dashboard which has removed the argument ```--auto-generate-certificates``` and has added some extra arguments:
 
 ```--enable-skip-login``` <br/>
