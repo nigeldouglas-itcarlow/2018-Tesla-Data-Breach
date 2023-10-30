@@ -43,4 +43,4 @@ customRules:
     condition: spawned_process and (proc.cmdline contains "stratum+tcp" or proc.cmdline contains "stratum2+tcp" or proc.cmdline contains "stratum+ssl" or proc.cmdline contains "stratum2+ssl")
     output: Possible miner running (command=%proc.cmdline pid=%proc.pid container=%container.info image=%container.image.repository)
     priority: CRITICAL
-    tags: [host, container, process, mitre_execution, T1496]  
+    tags: [MITRE_IMPACT, MITRE_T1496_resource_hijacking]  
