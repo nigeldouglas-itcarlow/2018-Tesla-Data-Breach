@@ -173,6 +173,7 @@ helm install falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --set auditLog.enabled=true \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
+  --version 3.3.0 \
   --set tty=true
 ```
 
@@ -424,8 +425,8 @@ Confirm the atomic red scenario was detected (in a second terminal window):
 kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'
 ```
 
-### Detect File Deletion on Host
-
+### Detect File Deletion on Host (T1070.004)
+Adversaries may delete files left behind by the actions of their intrusion activity. <br/>
 Start a Powershell session with `pwsh`:
 ```
 pwsh
@@ -451,9 +452,6 @@ Check the prerequisites to ensure the test conditions are right:
 Invoke-AtomicTest T1070.004 -GetPreReqs
 ```
 
-
-### Detect File Deletion on Host
-
 We will now execute the test. <br/>
 This test will attempt to delete individual files, or individual directories. <br/>
 This triggers the `Warning bulk data removed from disk` rule by default.
@@ -464,6 +462,104 @@ Invoke-AtomicTest T1070.004
 I successfully detected file deletion in the Kubernetes environment:
 
 <img width="1439" alt="Screenshot 2023-10-29 at 11 58 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/076c4a75-f6a8-4b01-81e4-3adf06532f84">
+
+
+### Escape to Host (T1611)
+Adversaries may break out of a container to gain access to the underlying host. <br/>
+This can allow an adversary access to other containerised resources from the host-level.
+```
+kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep Network tool launched in container
+```
+```
+Invoke-AtomicTest T1611
+```
+
+### Boot or Logon Initialisation Scripts (T1037.004)
+Adversaries can establish persistence by modifying RC scripts which are executed during system startup
+```
+kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep Potentially malicious Python script
+```
+```
+Invoke-AtomicTest T1037.004
+```
+
+Use  `Vim` to create our custom rules:
+```
+vi mitre_rules.yaml
+```
+
+```
+customRules:
+  mitre_rules.yaml: |-
+    - rule: Base64-encoded Python Script Execution
+      desc: >
+        This rule detects base64-encoded Python scripts on command line arguments.
+        Base64 can be used to encode binary data for transfer to ASCII-only command
+        lines. Attackers can leverage this technique in various exploits to load
+        shellcode and evade detection.
+      condition: >
+        spawned_process and (
+          ((proc.cmdline contains "python -c" or proc.cmdline contains "python3 -c" or proc.cmdline contains "python2 -c") and
+          (proc.cmdline contains "echo" or proc.cmdline icontains "base64"))
+          or
+          ((proc.cmdline contains "import" and proc.cmdline contains "base64" and proc.cmdline contains "decode"))
+        )
+      output: >
+        Potentially malicious Python script encoded on command line
+        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
+        proc.pname=%proc.pname evt.type=%evt.type gparent=%proc.aname[2]
+        ggparent=%proc.aname[3] gggparent=%proc.aname[4] evt.res=%evt.res
+        proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid
+        proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath
+        user.uid=%user.uid user.loginuid=%user.loginuid
+        user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name
+        image=%container.image.repository:%container.image.tag
+        container.id=%container.id container.name=%container.name file=%fd.name)
+      priority: warning
+      tags:
+        - ATOMIC_RED_T1037.004
+        - MITRE_TA0005_defense_evasion
+        - MITRE_T1027_obfuscated_files_and_information
+      source: syscall
+      append: false
+      exceptions:
+        - name: proc_cmdlines
+          comps:
+            - startswith
+          fields:
+            - proc.cmdline
+```
+
+This will write and quit the newly-configured `mitre_rules.yaml` file
+Using `helm upgrade --reuse-values`, it is a good practice to ensure `--tty=true` remains enabled - ensuring all rules are triggered in realtime.
+
+```
+helm upgrade falco falcosecurity/falco \
+  -n falco \
+	--version 3.3.0 \
+	--reuse-values \
+  -f mitre_rules.yaml
+```
+
+Let's delete the Falco pod to ensure the changes have been enforced.
+```
+kubectl delete pod -l app.kubernetes.io/name=falco -n falco
+```
+Note: A new pod after several seconds. Please be patient.
+```
+kubectl get pods -n falco -w
+```
+
+
+When you’re ready to move on to the next test or wrap things up, you’ll want to `-CleanUp` the test to avoid potentially having problems running other tests.
+```
+Invoke-AtomicTest T1037.004 -CleanUp
+```
+
+
+
+
+
 
 ### Launch a suspicious network tool in a container
 
