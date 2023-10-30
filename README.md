@@ -465,7 +465,47 @@ I successfully detected file deletion in the Kubernetes environment:
 
 <img width="1439" alt="Screenshot 2023-10-29 at 11 58 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/076c4a75-f6a8-4b01-81e4-3adf06532f84">
 
+### Launch a suspicious network tool in a container
 
+Shell into the same container we used earlier
+```
+kubectl exec -it tesla-pod -- bash
+```
+Installing a suspicious networking tool like telnet
+```
+yum install telnet telnet-server -y
+```
+If this fails, just apply a few modifications to the registry management:
+```
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+```
+Update the yum registry manager:
+```
+yum update -y
+```
+Now, try to install telnet and telnet server from the registry manager:
+```
+yum install telnet telnet-server -y
+```
+Just to generate the detection, run telnet:
+```
+telnet
+```
+Let's also test tcpdump to prove the macro is working:
+```
+yum install tcpdump -y
+```
+```
+tcpdump -D
+```
+```
+tcpdump --version
+```
+```
+tcpdump -nnSX port 443
+```
 
 ## Ongoing Issues
 
