@@ -541,6 +541,18 @@ helm upgrade falco falcosecurity/falco \
   -f mitre_rules.yaml
 ```
 
+Alternative way of testing the new ```mitre_rules.yaml``` file:
+```
+helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
+  --create-namespace \
+  --set tty=true \
+  --set auditLog.enabled=true \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set collectors.kubernetes.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false
+```
+
 Let's delete the Falco pod to ensure the changes have been enforced.
 ```
 kubectl delete pod -l app.kubernetes.io/name=falco -n falco
