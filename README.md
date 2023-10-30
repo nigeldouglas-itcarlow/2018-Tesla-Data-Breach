@@ -530,6 +530,10 @@ customRules:
             - proc.cmdline
 ```
 
+I'm lazy, so I uninstall and reinstall charts rathert than upgrading:
+```
+helm uninstall falco -n falco
+```
 Alternative way of testing the new ```mitre_rules.yaml``` file:
 ```
 helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
