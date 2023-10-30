@@ -536,8 +536,8 @@ Using `helm upgrade --reuse-values`, it is a good practice to ensure `--tty=true
 ```
 helm upgrade falco falcosecurity/falco \
   -n falco \
-	--version 3.3.0 \
-	--reuse-values \
+  --version 3.3.0 \
+  --reuse-values \
   -f mitre_rules.yaml
 ```
 
