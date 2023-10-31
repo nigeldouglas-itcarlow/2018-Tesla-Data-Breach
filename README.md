@@ -151,7 +151,7 @@ helm uninstall falco -n falco
 Install Falco again with the modified ```falco-sandbox_rules.yaml``` referenced from my own Github repository: <br/>
 https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml 
 ```
-helm install falco -f mitre-rules.yaml falcosecurity/falco --namespace falco \
+helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
   --set tty=true \
   --set auditLog.enabled=true \
