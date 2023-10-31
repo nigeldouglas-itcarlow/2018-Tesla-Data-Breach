@@ -159,9 +159,9 @@ helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.enabled=true \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
-  --set falcoctl.config.artifact.install.refs=falco-sandbox-rules:2 \
-  --set falcoctl.config.artifact.follow.refs=falco-sandbox-rules:2 \
-  --set falco.rules_file=falco-sandbox_rules.yaml
+  --set "falcoctl.config.artifact.install.refs={falco-sandbox-rules:2}" \
+  --set "falcoctl.config.artifact.follow.refs={falco-sandbox-rules:2}" \
+  --set "falco.rules_file={/etc/falco/falco-sandbox_rules.yaml}"
 kubectl get pods -n falco -o wide -w
 ```
 
