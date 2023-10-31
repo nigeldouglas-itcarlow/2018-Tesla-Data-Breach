@@ -297,6 +297,9 @@ Testing my own MetaMask wallet using the ```stratum``` protocol outlined by the 
 ./xmrig -o stratum+tcp://xmr.pool.minergate.com:45700 -u lies@lies.lies -p x -t 2
 ```
 
+<img width="1435" alt="Screenshot 2023-10-31 at 19 53 07" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dad4022c-aa60-45f1-801b-ce1a6adcd47a">
+
+
 ## Custom Rules - Command & Control
 
 Make sure the xmrig process is no longer running
