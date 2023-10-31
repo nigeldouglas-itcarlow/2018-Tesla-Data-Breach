@@ -299,6 +299,11 @@ Testing my own MetaMask wallet using the ```stratum``` protocol outlined by the 
 
 <img width="1435" alt="Screenshot 2023-10-31 at 19 53 07" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dad4022c-aa60-45f1-801b-ce1a6adcd47a">
 
+Some rules are specifically disabled within the sandbox manifest file, so we need to enable these separately
+
+<img width="1419" alt="Screenshot 2023-10-31 at 20 03 19" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/feb29583-82e2-443d-be5d-fa9000b6290b">
+
+
 
 ## Custom Rules - Command & Control
 
