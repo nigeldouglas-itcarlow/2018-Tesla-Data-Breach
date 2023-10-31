@@ -142,7 +142,14 @@ After you have done this, when Kubernetes dashboard is opened, you can click ```
 
 Installed Falco via ```Helm``` using the ```--set tty=true``` feature flag to ensure events are handled in real-time. <br/>
 By default, only the ```stable``` rules are loaded by Falco, you can install the ```sandbox``` or ```incubating``` rules by referencing them in the Helm chart: <br/>
-https://falco.org/docs/reference/rules/default-rules/ 
+https://falco.org/docs/reference/rules/default-rules/ <br/>
+<br/>
+Remove the existing Falco installation with stable rules:
+```
+helm uninstall falco -n falco
+```
+Install Falco again with the modified ```falco-sandbox_rules.yaml``` referenced from my own Github repository: <br/>
+https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml 
 ```
 helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -150,11 +157,11 @@ helm upgrade falco -f working-rules.yaml falcosecurity/falco --namespace falco \
   --set auditLog.enabled=true \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
-  --set collectors.kubernetes.enabled=false \
+  --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set "falcoctl.config.artifact.install.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
   --set "falcoctl.config.artifact.follow.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
-  --set "falco.rules_file={/etc/falco/k8s_audit_rules.yaml,/etc/falco/rules.d,/etc/falco/falco_rules.yaml,/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
+  --set "falco.rules_file={falco-sandbox_rules.yaml}"
 kubectl get pods -n falco -o wide -w
 ```
 
@@ -580,7 +587,7 @@ Invoke-AtomicTest T1037.004 -CleanUp
 
 Shell into the same container we used earlier
 ```
-kubectl exec -it tesla-pod -- bash
+kubectl exec -it tesla-app -- bash
 ```
 Installing a suspicious networking tool like telnet
 ```
