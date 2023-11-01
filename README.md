@@ -165,7 +165,7 @@ helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
 kubectl get pods -n falco -o wide -w
 ```
 
-This is still an in-progress test scenario - ```stable``` and ```sandbox```
+This is still an in-progress test scenario - ```incubation``` and ```sandbox```
 ```
 helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -175,9 +175,9 @@ helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.enabled=true \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
-  --set "falcoctl.config.artifact.install.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
-  --set "falcoctl.config.artifact.follow.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
-  --set "falco.rules_file={/etc/falco/rules.d,/etc/falco/falco_rules.yaml,/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
+  --set "falcoctl.config.artifact.install.refs={falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falcoctl.config.artifact.follow.refs={falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falco.rules_file={/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
 kubectl get pods -n falco -o wide -w
 ```
 
