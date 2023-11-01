@@ -14,7 +14,7 @@ customRules:
           ((proc.cmdline contains "import" and proc.cmdline contains "base64" and proc.cmdline contains "decode"))
         )
       output: >
-        Potentially malicious Python script encoded on command line
+        Potentially malicious Python script encoded on the command line
         (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
         proc.pname=%proc.pname evt.type=%evt.type gparent=%proc.aname[2]
         ggparent=%proc.aname[3] gggparent=%proc.aname[4] evt.res=%evt.res
@@ -85,12 +85,8 @@ customRules:
         proc.args endswith "abah1.sh" or
         proc.args endswith "/huh.sh" or
         proc.args endswith "ohshit.sh" or
-        proc.args endswith "/mxr.sh" )
+        proc.args endswith "/mxr.sh"
+      )
 
-    - rule: Detect cryptominers that use Stratum protocol
-      desc: Miners typically specify the mining pool to connect to with a URI that begins with 'stratum+tcp'
-      condition: spawned_process and (proc.cmdline contains "stratum+tcp" or proc.cmdline contains "stratum2+tcp" or proc.cmdline contains "stratum+ssl" or proc.cmdline contains "stratum2+ssl")
-      output: Possible miner running (command=%proc.cmdline pid=%proc.pid container=%container.info image=%container.image.repository)
-      priority: CRITICAL
+    - rule: Detect outbound connections to common miner pool ports
       enabled: true
-      tags: [MITRE_IMPACT, MITRE_T1496_resource_hijacking]
