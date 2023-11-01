@@ -482,8 +482,12 @@ Copy Files From Pod to Local System. <br/>
 We have a nginx web server running inside a container. <br/>
 Let’s copy the ```index.html file``` (which nginx serves by default) inside the ```/usr/share/nginx/html``` directory to our local system. Run the following command:
 ```
-kubectl cp tesla-app:/usr/reload-cmds.sh ~/desktop/reload-cmds.sh
+kubectl cp tesla-app:xmrig-6.16.4-linux-static-x64.tar.gz ~/desktop/xmrig-6.16.4-linux-static-x64.tar.gz
 ```
+
+<img width="1431" alt="Screenshot 2023-11-01 at 11 33 23" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/44642a1d-a970-496b-ab17-6afa28ce540d">
+
+
 
 ## Cleanup Helm Deployments
 ```
