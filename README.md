@@ -323,6 +323,11 @@ Some rules are specifically disabled within the sandbox manifest file, so we nee
 
 <img width="1419" alt="Screenshot 2023-10-31 at 20 03 19" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/feb29583-82e2-443d-be5d-fa9000b6290b">
 
+Maturity rules are coming through, but I need to make some changes either to the ConfigMap or within the custom rules config file:
+
+<img width="1419" alt="Screenshot 2023-11-01 at 11 28 04" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/c360aba5-d580-4c2f-893a-fe9c11fde6d0">
+
+
 
 
 ## Custom Rules - Command & Control
