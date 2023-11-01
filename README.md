@@ -344,8 +344,8 @@ killall -9 xmrig
 
 Finding credentials while we are in the container:
 ```
-sudo cat /etc/shadow > /dev/null
-sudo find /root -name "id_rsa"
+cat /etc/shadow > /dev/null
+find /root -name "id_rsa"
 ```
 
 ### Obfuscating Activity
@@ -477,7 +477,7 @@ Copy Files From Pod to Local System. <br/>
 We have a nginx web server running inside a container. <br/>
 Let’s copy the ```index.html file``` (which nginx serves by default) inside the ```/usr/share/nginx/html``` directory to our local system. Run the following command:
 ```
-kubectl cp mynginx-ff886775c:/usr/share/nginx/html/index.html ~/desktop/index.html
+kubectl cp tesla-app:/usr/share/crypto-policies/reload-cmds.sh ~/desktop/reload-cmds.sh
 ```
 
 ## Cleanup Helm Deployments
