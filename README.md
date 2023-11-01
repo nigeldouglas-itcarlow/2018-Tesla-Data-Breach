@@ -165,6 +165,22 @@ helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
 kubectl get pods -n falco -o wide -w
 ```
 
+This is still an in-progress test scenario - ```stable``` and ```sandbox```
+```
+helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
+  --create-namespace \
+  --set tty=true \
+  --set auditLog.enabled=true \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set collectors.kubernetes.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  --set "falcoctl.config.artifact.install.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falcoctl.config.artifact.follow.refs={falco-rules:2,falco-incubating-rules:2,falco-sandbox-rules:2}" \
+  --set "falco.rules_file={/etc/falco/rules.d,/etc/falco/falco_rules.yaml,/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
+kubectl get pods -n falco -o wide -w
+```
+
 <img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
 
 - Where the option ```falcoctl.config.artifact.install.refs``` governs which rules are downloaded at startup
