@@ -472,9 +472,13 @@ tcpdump -nnSX port 443
 ```
 
 
-
-
-
+### Exfiltrating Artifacts via the Kubernetes Control Plane
+Copy Files From Pod to Local System. <br/>
+We have a nginx web server running inside a container. <br/>
+Let’s copy the ```index.html file``` (which nginx serves by default) inside the ```/usr/share/nginx/html``` directory to our local system. Run the following command:
+```
+kubectl cp mynginx-ff886775c:/usr/share/nginx/html/index.html ~/desktop/index.html
+```
 
 ## Cleanup Helm Deployments
 ```
