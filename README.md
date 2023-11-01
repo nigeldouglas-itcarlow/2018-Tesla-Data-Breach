@@ -265,6 +265,10 @@ https://falco.org/docs/install-operate/third-party/learning/
 
 ## Running a Cryptominer on an insecure workload
 
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/tesla-app.yaml
+```
+
 The adversaries would have terminal shelled into the above workload in order to install the cryptominer.
 ```
 kubectl exec -it tesla-app -- bash
