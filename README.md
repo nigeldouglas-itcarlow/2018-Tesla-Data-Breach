@@ -648,4 +648,18 @@ kubectl get pods -n falco -w
 Issues with the environment (Making Number of VPCs was reached) - disregard:
 <img width="1138" alt="Screenshot 2023-10-25 at 20 40 42" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/cc00fbdd-e239-40e4-bc05-8d5365396bde">
 
+## Deploying the Kubernetes dashboard via Helm
+
+Add kubernetes-dashboard repository
+```
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+```
+
+Deploy a Helm Release named ```kubernetes-dashboard``` using the kubernetes-dashboard chart
+```
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+```
+
+<img width="1284" alt="Screenshot 2023-11-03 at 11 39 14" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dd3f0e88-709b-40bd-b486-bf9f49a6801e">
+
 
