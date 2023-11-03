@@ -149,23 +149,10 @@ Remove the existing Falco installation with stable rules:
 helm uninstall falco -n falco
 ```
 Install Falco again with the modified ```falco-sandbox_rules.yaml``` referenced from my own Github repository: <br/>
-https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml 
-```
-helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
-  --create-namespace \
-  --set tty=true \
-  --set auditLog.enabled=true \
-  --set falcosidekick.enabled=true \
-  --set falcosidekick.webui.enabled=true \
-  --set collectors.kubernetes.enabled=true \
-  --set falcosidekick.webui.redis.storageEnabled=false \
-  --set "falcoctl.config.artifact.install.refs={falco-sandbox-rules:2}" \
-  --set "falcoctl.config.artifact.follow.refs={falco-sandbox-rules:2}" \
-  --set "falco.rules_file={/etc/falco/falco-sandbox_rules.yaml}"
-kubectl get pods -n falco -o wide -w
-```
+https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml <br/>
 
-This is still an in-progress test scenario - ```incubation``` and ```sandbox```
+<br/>
+I'm enabling the ```incubation``` and ```sandbox``` rules for the purpose of this assignment:
 ```
 helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -178,10 +165,13 @@ helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --set "falcoctl.config.artifact.install.refs={falco-incubating-rules:2,falco-sandbox-rules:2}" \
   --set "falcoctl.config.artifact.follow.refs={falco-incubating-rules:2,falco-sandbox-rules:2}" \
   --set "falco.rules_file={/etc/falco/falco-incubating_rules.yaml,/etc/falco/falco-sandbox_rules.yaml}"
-kubectl get pods -n falco -o wide -w
+kubectl get pods -n falco -o wide
 ```
 
-<img width="1437" alt="Screenshot 2023-10-22 at 13 35 01" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/48d4f1aa-ae8d-4f02-83a7-7c72fdd192eb">
+<img width="1083" alt="Screenshot 2023-11-03 at 16 47 25" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/efff769d-a034-4a37-a729-d9f61c9ea74f">
+
+
+
 
 - Where the option ```falcoctl.config.artifact.install.refs``` governs which rules are downloaded at startup
 - ```falcoctl.config.artifact.follow.refs``` identifies which rules are automatically updated and
