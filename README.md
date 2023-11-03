@@ -149,11 +149,12 @@ Remove the existing Falco installation with stable rules:
 helm uninstall falco -n falco
 ```
 
-Install Falco again with the modified ```falco-sandbox_rules.yaml``` referenced from my own Github repository: <br/>
-https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml
+Install Falco again with the modified ```falco-sandbox_rules.yaml``` referenced from my own Github repository:
+```https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/blob/main/rules/falco-sandbox_rules.yaml```
 
 <br/>
 I'm enabling the ```incubation``` and ```sandbox``` rules for the purpose of this assignment:
+
 ```
 helm install falco -f mitre_rules.yaml falcosecurity/falco --namespace falco \
   --create-namespace \
