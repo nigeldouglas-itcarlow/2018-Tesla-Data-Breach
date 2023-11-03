@@ -659,8 +659,20 @@ Deploy a Helm Release named ```kubernetes-dashboard``` using the kubernetes-dash
 ```
 helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
 ```
-
 <img width="1284" alt="Screenshot 2023-11-03 at 11 39 14" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dd3f0e88-709b-40bd-b486-bf9f49a6801e">
+
+
+### Upgrade the dashboard without authentication
+```
+helm upgrade -n kubernetes-dashboard kubernetes-dashboard stable/kubernetes-dashboard --set basicAuth.enabled=false -f custom-values.yaml
+```
+
+Add this context to ```custom-values.yaml```
+```
+basicAuth:
+  enabled: false
+```
+
 
 Copying the kubeconfig file from its rightful location to my desktop:
 ```
