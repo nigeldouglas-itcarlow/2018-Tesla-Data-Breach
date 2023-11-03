@@ -664,13 +664,26 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 
 ### Upgrade the dashboard without authentication
 ```
-helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --set basicAuth.enabled=false -f custom-values.yaml
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard \
+  --set basicAuth.enabled=false \
+  --set args[0]="--enable-skip-login" \
+  --set args[1]="--disable-settings-authorizer" \
+  --set args[2]="--enable-insecure-login" \
+  --set args[3]="--insecure-bind-address=0.0.0.0" \
+  --namespace kubernetes-dashboard \
+  -f custom-values.yaml
 ```
 
 Add this context to ```custom-values.yaml```
 ```
 basicAuth:
   enabled: false
+
+args:
+  - --enable-skip-login
+  - --disable-settings-authorizer
+  - --enable-insecure-login
+  - --insecure-bind-address=0.0.0.0
 ```
 
 
