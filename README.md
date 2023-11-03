@@ -664,7 +664,7 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 
 ### Upgrade the dashboard without authentication
 ```
-helm upgrade -n kubernetes-dashboard kubernetes-dashboard stable/kubernetes-dashboard --set basicAuth.enabled=false -f custom-values.yaml
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --set basicAuth.enabled=false -f custom-values.yaml
 ```
 
 Add this context to ```custom-values.yaml```
