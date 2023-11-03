@@ -662,4 +662,7 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 
 <img width="1284" alt="Screenshot 2023-11-03 at 11 39 14" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dd3f0e88-709b-40bd-b486-bf9f49a6801e">
 
-
+Copying the kubeconfig file from its rightful location to my desktop:
+```
+cp ~/.kube/config ~/Desktop/
+```
