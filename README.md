@@ -467,6 +467,19 @@ kubectl cp tesla-app:xmrig-6.16.4-linux-static-x64.tar.gz ~/desktop/xmrig-6.16.4
 
 <img width="1431" alt="Screenshot 2023-11-01 at 11 33 23" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/44642a1d-a970-496b-ab17-6afa28ce540d">
 
+### T1552.001 - Unsecured Credentials: Credentials In Files
+We can use Atomic Red team to ```Find AWS credentials``` in order to move laterally to the cloud
+https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1552.001/T1552.001.md#atomic-test-1---find-aws-credentials
+```
+Invoke-AtomicTest T1552.001 -ShowDetails
+```
+
+<img width="825" alt="Screenshot 2023-11-13 at 21 27 36" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/3f444b76-3914-4133-b1aa-9da50f556061">
+
+
+
+
+
 
 
 ## Cleanup Helm Deployments
