@@ -442,6 +442,17 @@ Just to generate the detection, run telnet:
 ```
 telnet
 ```
+
+<img width="1436" alt="Screenshot 2023-11-14 at 21 16 33" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a008ab2c-224b-4b00-9500-62f4e460bcb6">
+
+
+<img width="1436" alt="Screenshot 2023-11-14 at 21 16 56" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/739a9d27-a76d-47cd-b7bc-4a20a6845adc">
+
+<img width="1436" alt="Screenshot 2023-11-14 at 21 15 59" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/af3e220c-aad9-43d6-ab7b-47ed391a2706">
+
+
+
+
 Let's also test tcpdump to prove the macro is working:
 ```
 yum install tcpdump -y
