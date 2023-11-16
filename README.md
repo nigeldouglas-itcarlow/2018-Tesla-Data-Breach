@@ -714,5 +714,5 @@ helm install falco falcosecurity/falco \
   --set falcosidekick.webui.enabled=true \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
-  -f custom_rules.yaml
+  -f custom-rules.yaml
 ```
