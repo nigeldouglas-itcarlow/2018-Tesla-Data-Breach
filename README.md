@@ -696,7 +696,6 @@ Testing operation for version control
 helm install falco falcosecurity/falco \
   -n falco \
   --version 3.3.0 \
-  --reuse-values \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
   --set collectors.kubernetes.enabled=true \
