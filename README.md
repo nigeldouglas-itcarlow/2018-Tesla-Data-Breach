@@ -693,7 +693,7 @@ cp ~/.kube/config ~/Desktop/
 
 Testing operation for version control
 ```
-helm upgrade falco falcosecurity/falco \
+helm install falco falcosecurity/falco \
   -n falco \
   --version 3.3.0 \
   --reuse-values \
