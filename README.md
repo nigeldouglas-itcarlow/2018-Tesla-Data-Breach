@@ -690,3 +690,16 @@ Copying the kubeconfig file from its rightful location to my desktop:
 ```
 cp ~/.kube/config ~/Desktop/
 ```
+
+Testing operation for version control
+```
+helm upgrade falco falcosecurity/falco \
+  -n falco \
+	--version 3.3.0 \
+	--reuse-values \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set collectors.kubernetes.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  -f mitre_rules.yaml
+```
