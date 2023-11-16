@@ -691,7 +691,9 @@ Copying the kubeconfig file from its rightful location to my desktop:
 cp ~/.kube/config ~/Desktop/
 ```
 
-Testing operation for version control
+## Custom Test Scenarios:
+
+Base64 encoding
 ```
 helm install falco falcosecurity/falco \
   -n falco \
@@ -701,4 +703,16 @@ helm install falco falcosecurity/falco \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   -f mitre_rules.yaml
+```
+
+Mining Binary Detection
+```
+helm install falco falcosecurity/falco \
+  -n falco \
+  --version 3.3.0 \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set collectors.kubernetes.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  -f custom_rules.yaml
 ```
