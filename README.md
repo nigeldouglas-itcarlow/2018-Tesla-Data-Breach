@@ -330,6 +330,25 @@ You can now either kill the process by ```Process Name``` or ```Process ID```
 killall -9 xmrig
 ```
 
+## Nanonminer Test Scenario
+```
+wget https://github.com/nanopool/nanominer/releases/download/v1.4.0/nanominer-linux-1.4.0.tar.gz
+```
+```
+tar -xvzf ./nanominer-linux-1.4.0.tar.gz
+```
+```
+cd nanominer-linux-1.4.0/ 
+```
+```
+nano config.ini
+```
+```
+./nanominer -d
+```
+
+
+
 ### Credential Access
 
 Finding credentials while we are in the container:
