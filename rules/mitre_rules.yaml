@@ -37,3 +37,6 @@ customRules:
             - startswith
           fields:
             - proc.cmdline
+
+    - rule: Detect outbound connections to common miner pool ports
+      enabled: true          
