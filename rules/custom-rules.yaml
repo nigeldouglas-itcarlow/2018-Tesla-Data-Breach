@@ -40,6 +40,29 @@ customRules:
 
     - rule: Detect outbound connections to common miner pool ports
       enabled: true
+
+    - rule: Detect Xmrig Execution
+      desc: "Detects the execution of the Xmrig binary in the command line"
+      condition: >
+        spawned_process and
+        proc.cmdline contains "xmrig"
+      output: >
+        Xmrig binary executed on command line
+        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
+        proc.pname=%proc.pname evt.type=%evt.type gparent=%proc.aname[2]
+        ggparent=%proc.aname[3] gggparent=%proc.aname[4] evt.res=%evt.res
+        proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid
+        proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath
+        user.uid=%user.uid user.loginuid=%user.loginuid
+        user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name
+        image=%container.image.repository:%container.image.tag
+        container.id=%container.id container.name=%container.name file=%fd.name)
+      priority: warning
+      tags:
+        - cryptomining
+        - xmrig_execution
+      source: syscall
+
       
     - rule: Miner Binary Detected
       desc: "Malicious script or binary detected in pod or host. The rule was triggered by the execve syscall"
