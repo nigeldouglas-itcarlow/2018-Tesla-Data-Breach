@@ -292,7 +292,8 @@ On the right side pane, we can see that all rules are automatically labelled wit
 
 After enabling the mining ports and pools rule within my mitre_rules.yaml file, I can see the new domain detection for mining pool:
 
-![Uploading Screenshot 2023-11-17 at 11.50.08.png…]()
+<img width="1436" alt="Screenshot 2023-11-17 at 11 50 08" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/996f70f8-9dcd-46e8-ae76-7b45df443151">
+
 
 
 
