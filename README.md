@@ -698,7 +698,7 @@ cp ~/.kube/config ~/Desktop/
 
 ## Custom Test Scenarios:
 
-Base64 encoding
+Base64 encoding and mining pools. This works!!
 ```
 helm install falco falcosecurity/falco \
   -n falco \
@@ -710,7 +710,7 @@ helm install falco falcosecurity/falco \
   -f mitre_rules.yaml
 ```
 
-Mining Binary Detection
+Mining Binary Detection. Pending tests
 ```
 helm install falco falcosecurity/falco \
   -n falco \
