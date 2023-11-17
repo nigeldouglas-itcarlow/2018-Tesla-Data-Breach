@@ -715,6 +715,38 @@ Copying the kubeconfig file from its rightful location to my desktop:
 cp ~/.kube/config ~/Desktop/
 ```
 
+## Tracing via Tetragon
+
+Open an activity tail for Tetragon (Terminal 2):
+```
+kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod tesla-pod
+```
+Open an event output for Falco (Terminal 3):
+```
+kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.pod=tesla-pod
+```
+
+## Network traffic analysis using Tetragon
+Create a TracingPolicy in Tetragon
+```
+kubectl apply -f https://raw.githubusercontent.com/cilium/tetragon/main/examples/tracingpolicy/tcp-connect.yaml
+```
+Check the output:
+```
+kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod test-pod-1
+```
+
+## Kill the Miner Processes using Tetragon
+
+Now we apply a Tetragon TracingPolicy that will perform sigkill action when the script is run:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPoli
+```
+
+
+
+
+
 ## Custom Test Scenarios:
 
 Base64 encoding and mining pools. This works!!
