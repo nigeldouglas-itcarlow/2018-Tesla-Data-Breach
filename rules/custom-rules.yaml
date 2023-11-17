@@ -1,5 +1,46 @@
 customRules:
-  rules-mining.yaml: |-
+  mitre_rules.yaml: |-
+    - rule: Base64-encoded Python Script Execution
+      desc: >
+        This rule detects base64-encoded Python scripts on command line arguments.
+        Base64 can be used to encode binary data for transfer to ASCII-only command
+        lines. Attackers can leverage this technique in various exploits to load
+        shellcode and evade detection.
+      condition: >
+        spawned_process and (
+          ((proc.cmdline contains "python -c" or proc.cmdline contains "python3 -c" or proc.cmdline contains "python2 -c") and
+          (proc.cmdline contains "echo" or proc.cmdline icontains "base64"))
+          or
+          ((proc.cmdline contains "import" and proc.cmdline contains "base64" and proc.cmdline contains "decode"))
+        )
+      output: >
+        Potentially malicious Python script encoded on command line
+        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
+        proc.pname=%proc.pname evt.type=%evt.type gparent=%proc.aname[2]
+        ggparent=%proc.aname[3] gggparent=%proc.aname[4] evt.res=%evt.res
+        proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid
+        proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath
+        user.uid=%user.uid user.loginuid=%user.loginuid
+        user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name
+        image=%container.image.repository:%container.image.tag
+        container.id=%container.id container.name=%container.name file=%fd.name)
+      priority: warning
+      tags:
+        - ATOMIC_RED_T1037.004
+        - MITRE_TA0005_defense_evasion
+        - MITRE_T1027_obfuscated_files_and_information
+      source: syscall
+      append: false
+      exceptions:
+        - name: proc_cmdlines
+          comps:
+            - startswith
+          fields:
+            - proc.cmdline
+
+    - rule: Detect outbound connections to common miner pool ports
+      enabled: true
+      
     - rule: Miner Binary Detected
       desc: "Malicious script or binary detected in pod or host. The rule was triggered by the execve syscall"
       condition: >
@@ -48,6 +89,3 @@ customRules:
         proc.args endswith "/huh.sh" or
         proc.args endswith "ohshit.sh" or
         proc.args endswith "/mxr.sh" )
-    
-    - rule: Detect outbound connections to common miner pool ports
-      enabled: true
