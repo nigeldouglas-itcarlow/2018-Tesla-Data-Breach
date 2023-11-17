@@ -102,3 +102,11 @@ customRules:
       output: Exfiltrating Artifacts via Kubernetes Control Plane (file=%fd.name evt_type=%evt.type user=%user.name user_uid=%user.uid user_loginuid=%user.loginuid process=%proc.name proc_exepath=%proc.exepath parent=%proc.pname command=%proc.cmdline terminal=%proc.tty exe_flags=%evt.arg.flags %container.info)
       priority: NOTICE
       tags: [mitre_exfiltration, TA0010]
+
+    - macro: system_level_side_effect_artifacts_kubectl_cp
+      condition: (fd.name startswith /etc or 
+                  fd.name startswith /proc or 
+                  fd.name startswith /lib or 
+                  fd.name startswith /run or 
+                  fd.name startswith /usr or 
+                  fd.name="/")
