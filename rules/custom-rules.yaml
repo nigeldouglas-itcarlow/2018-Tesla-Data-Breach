@@ -43,17 +43,43 @@ customRules:
     - rule: Detect outbound connections to common miner pool ports
       enabled: true
 
-    - rule: Detect xmrig Execution
-      desc: Detects the execution of the Xmrig binary in the command line
+    - rule: Detect XMRig execution
+      desc: Detects the execution of the XMRig binary in the command line
       condition: >
         spawned_process and
         proc.cmdline contains "xmrig"
       output: >
-        Xmrig binary executed on command line
-        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name)
+        XMRig binary executed on command line
+        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
+        proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid
+        proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath
+        user.uid=%user.uid user.loginuid=%user.loginuid
+        user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name
+        image=%container.image.repository:%container.image.tag
+        container.id=%container.id container.name=%container.name file=%fd.name)
       priority: warning
       tags:
         - cryptomining
         - mitre_execution
         - T1204.002
+      source: syscall
+
+    - rule: Detect Nanominer Execution
+      desc: Detects the execution of the Nanominer binary in the command line
+      condition: >
+        spawned_process and
+        proc.cmdline contains "nanominer"
+      output: >
+        Nanominer binary executed on command line
+        (proc.cmdline=%proc.cmdline user.name=%user.name proc.name=%proc.name
+        proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid
+        proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath
+        user.uid=%user.uid user.loginuid=%user.loginuid
+        user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name
+        image=%container.image.repository:%container.image.tag
+        container.id=%container.id container.name=%container.name file=%fd.name)
+      priority: warning
+      tags:
+        - cryptomining
+        - nanominer_execution
       source: syscall
