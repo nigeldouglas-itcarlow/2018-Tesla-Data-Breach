@@ -45,7 +45,7 @@ Once the cluster is successfully spun-up, I can scale it down to ```zero nodes``
 date
 eksctl get cluster
 eksctl get nodegroup --cluster tesla-cluster
-eksctl scale nodegroup --cluster tesla-cluster --name ng-1a061999 --nodes 0
+eksctl scale nodegroup --cluster tesla-cluster --name ng-64004793 --nodes 0
 ```
 
 <img width="807" alt="Screenshot 2023-10-29 at 12 02 04" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/a9d689b7-bb67-4f4a-a1c7-2e0a5c63e806">
