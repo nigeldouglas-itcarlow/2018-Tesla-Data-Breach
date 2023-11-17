@@ -290,6 +290,10 @@ On the right side pane, we can see that all rules are automatically labelled wit
 
 <img width="1440" alt="Screenshot 2023-10-27 at 12 06 03" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/392e58ea-357a-44ad-a37c-8b7bb783baec">
 
+After enabling the mining ports and pools rule within my mitre_rules.yaml file, I can see the new domain detection for mining pool:
+
+![Uploading Screenshot 2023-11-17 at 11.50.08.png…]()
+
 
 
 Testing my own MetaMask wallet using the ```stratum``` protocol outlined by the [Trend Micro](https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/tesla-and-jenkins-servers-fall-victim-to-cryptominers#:~:text=Stratum%20bitcoin%20mining%20protocol) researchers:
