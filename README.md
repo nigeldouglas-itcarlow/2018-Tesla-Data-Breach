@@ -692,22 +692,13 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 <img width="1284" alt="Screenshot 2023-11-03 at 11 39 14" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/dd3f0e88-709b-40bd-b486-bf9f49a6801e">
 
 
-### Upgrade the dashboard without authentication
+### Uninstall the Kubernetes Dashboard
 ```
-helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard -f custom-values.yaml
+helm uninstall kubernetes-dashboard -n kubernetes-dashboard
 ```
 
-Add this context to ```custom-values.yaml```
-```
-basicAuth:
-  enabled: false
+<img width="831" alt="Screenshot 2023-11-18 at 23 47 28" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/6df07524-7625-4ab1-ac07-b479fd0d061b">
 
-args:
-  - --enable-skip-login
-  - --disable-settings-authorizer
-  - --enable-insecure-login
-  - --insecure-bind-address=0.0.0.0
-```
 
 
 Copying the kubeconfig file from its rightful location to my desktop:
