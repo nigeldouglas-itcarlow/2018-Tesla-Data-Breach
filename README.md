@@ -748,7 +748,7 @@ kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.po
 
 Now we apply a Tetragon TracingPolicy that will perform sigkill action when the script is run:
 ```
-kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPoli
+https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/sigkill-miner.yaml
 ```
 
 
