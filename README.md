@@ -748,19 +748,7 @@ https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/m
 
 ## Custom Test Scenarios:
 
-Base64 encoding and mining pools. This works!!
-```
-helm install falco falcosecurity/falco \
-  -n falco \
-  --version 3.3.0 \
-  --set falcosidekick.enabled=true \
-  --set falcosidekick.webui.enabled=true \
-  --set collectors.kubernetes.enabled=true \
-  --set falcosidekick.webui.redis.storageEnabled=false \
-  -f mitre_rules.yaml
-```
-
-Mining Binary Detection. Pending tests
+Base64 encoding, mining binaries and mining pools. They all work!! :)
 ```
 helm install falco falcosecurity/falco \
   -n falco \
@@ -770,4 +758,9 @@ helm install falco falcosecurity/falco \
   --set collectors.kubernetes.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   -f custom-rules.yaml
+```
+
+Deploy Kubernetes Dashboard:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/public-dashboard.yaml
 ```
