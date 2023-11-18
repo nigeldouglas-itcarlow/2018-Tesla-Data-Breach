@@ -751,7 +751,7 @@ Now we apply a Tetragon TracingPolicy that will perform sigkill action when the 
 https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/sigkill-miner.yaml
 ```
 
-
+<img width="1381" alt="Screenshot 2023-11-18 at 20 40 11" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/02a6f86d-61fb-4537-b7a5-66e75d4bb598">
 
 
 
