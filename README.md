@@ -715,6 +715,16 @@ Copying the kubeconfig file from its rightful location to my desktop:
 cp ~/.kube/config ~/Desktop/
 ```
 
+## Install Tetragon
+
+```
+helm repo add cilium https://helm.cilium.io
+helm repo update
+helm install tetragon cilium/tetragon -n kube-system
+kubectl rollout status -n kube-system ds/tetragon -w
+```
+
+
 ## Tracing via Tetragon
 
 Open an activity tail for Tetragon (Terminal 2):
