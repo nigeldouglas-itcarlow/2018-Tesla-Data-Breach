@@ -27,8 +27,8 @@ customRules:
       priority: warning
       tags:
         - T1037.004
-        - TA0005
-        - mitre_defense_evasion
+        - T1547.006
+        - MITRE_defense_evasion
         - MITRE_obfuscated_files_and_information
         - T1027
       source: syscall
