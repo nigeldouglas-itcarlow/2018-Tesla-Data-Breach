@@ -724,6 +724,11 @@ helm install tetragon cilium/tetragon -n kube-system
 kubectl rollout status -n kube-system ds/tetragon -w
 ```
 
+## Network traffic analysis using Tetragon
+Create a TracingPolicy in Tetragon
+```
+kubectl apply -f https://raw.githubusercontent.com/cilium/tetragon/main/examples/tracingpolicy/tcp-connect.yaml
+```
 
 ## Tracing via Tetragon
 
@@ -734,16 +739,6 @@ kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout 
 Open an event output for Falco (Terminal 3):
 ```
 kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.pod=tesla-pod
-```
-
-## Network traffic analysis using Tetragon
-Create a TracingPolicy in Tetragon
-```
-kubectl apply -f https://raw.githubusercontent.com/cilium/tetragon/main/examples/tracingpolicy/tcp-connect.yaml
-```
-Check the output:
-```
-kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod test-pod-1
 ```
 
 ## Kill the Miner Processes using Tetragon
