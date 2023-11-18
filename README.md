@@ -734,12 +734,15 @@ kubectl apply -f https://raw.githubusercontent.com/cilium/tetragon/main/examples
 
 Open an activity tail for Tetragon (Terminal 2):
 ```
-kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod tesla-pod
+kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod tesla-app
 ```
 Open an event output for Falco (Terminal 3):
 ```
-kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.pod=tesla-pod
+kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.pod=tesla-app
 ```
+
+<img width="1205" alt="Screenshot 2023-11-18 at 20 31 20" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/c31688f9-5765-4f0c-baae-884451575e78">
+
 
 ## Kill the Miner Processes using Tetragon
 
