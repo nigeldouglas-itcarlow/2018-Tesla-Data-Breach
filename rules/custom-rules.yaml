@@ -110,3 +110,11 @@ customRules:
                   fd.name startswith /run or 
                   fd.name startswith /usr or 
                   fd.name="/")
+
+    - rule: Detect Pod Deployment in kubernetes-dashboard namespace
+      desc: Detects pod creation in the kubernetes-dashboard namespace
+      condition: evt.type = execve and k8s.ns.name = "kubernetes-dashboard"
+      output: Process associated with pod started in kubernetes-dashboard namespace (user=%user.name command=%proc.cmdline)
+      priority: INFO
+      tags: [t1610, Execution]
+
