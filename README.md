@@ -764,3 +764,5 @@ Deploy Kubernetes Dashboard:
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/main/public-dashboard.yaml
 ```
+
+<img width="1427" alt="Screenshot 2023-11-18 at 23 59 08" src="https://github.com/nigeldouglas-itcarlow/2018-Tesla-Data-Breach/assets/126002808/aca83730-ff4b-4c58-a949-8f48dce9c608">
